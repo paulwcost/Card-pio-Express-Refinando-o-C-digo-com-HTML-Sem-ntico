@@ -1,9 +1,11 @@
+/* Regras globais para todos os elementos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
+/* Estilos gerais para o body */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f9;
@@ -11,29 +13,32 @@ body {
     line-height: 1.6;
 }
 
+/* Estilos para links */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-
+/* Estilos para o cabeçalho */
 header {
     background-color: #000000;
     text-align: center;
     padding: 40px 0;
 }
 
+/* Estilos para o título do cabeçalho */
 header h1 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
+/* Estilos para a imagem do cabeçalho */
 header img {
     width: 250px;
     height: auto;
 }
 
-
+/* Estilos para a navegação */
 nav ul {
     list-style-type: none;
     text-align: center;
@@ -42,11 +47,13 @@ nav ul {
     border-radius: 5px;
 }
 
+/* Estilos para os itens da navegação */
 nav li {
     display: inline-block;
     margin: 0 10px;
 }
 
+/* Estilos para os links na navegação */
 nav a {
     color: white;
     font-size: 18px;
@@ -55,12 +62,13 @@ nav a {
     display: inline-block;
 }
 
+/* Efeito de hover para os links da navegação */
 nav a:hover {
     background-color: #64091C;
     border-radius: 5px;
 }
 
-/*técnicas de responsividade*/
+/* Estilos para o conteúdo principal */
 main {
     padding: 20px;
     display: flex;
@@ -69,13 +77,14 @@ main {
     gap: 20px;
 }
 
-
+/* Estilos para as seções */
 section {
     width: 100%;
     max-width: 600px;
     margin-bottom: 40px;
 }
 
+/* Estilos para os títulos das seções */
 section h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -84,7 +93,7 @@ section h2 {
     color: #2e3b4e;
 }
 
-
+/* Estilos para os artigos */
 article {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -95,11 +104,13 @@ article {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Efeito de hover para os artigos */
 article:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Estilos para as imagens dentro dos artigos */
 article img {
     width: 100%;
     height: auto;
@@ -107,22 +118,26 @@ article img {
     margin-bottom: 15px;
 }
 
-/* Media Queries responsividade*/
+/* Media Queries para responsividade (para telas menores que 768px) */
 @media (max-width: 768px) {
+    /* Estilos para o título do cabeçalho em telas menores */
     header h1 {
-        font-size: 22px;
+        font-size: 22px; /* Reduz o tamanho da fonte para 22px */
     }
 
+    /* Estilos para a navegação em telas menores */
     nav ul {
-        padding: 10px;
+        padding: 10px; /* Ajusta o preenchimento da navegação para 10px */
     }
 
+    /* Estilos para os links da navegação em telas menores */
     nav a {
-        font-size: 16px;
-        padding: 8px 12px;
+        font-size: 16px; /* Reduz o tamanho da fonte para 16px */
+        padding: 8px 12px; /* Ajusta o preenchimento para 8px vertical e 12px horizontal */
     }
 
+    /* Estilos para as seções em telas menores */
     section {
-        width: 90%;
+        width: 90%; /* Aumenta a largura das seções para 90% em telas menores */
     }
 }
