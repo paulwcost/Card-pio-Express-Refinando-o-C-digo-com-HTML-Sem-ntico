@@ -1,86 +1,35 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html lang="pt-br"> <!-- Início da página HTML com idioma português brasileiro -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio do Restaurante</title>
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres para a página (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura o comportamento de exibição para dispositivos móveis -->
+    <title>Cardápio do Restaurante</title> <!-- Título que aparece na aba do navegador -->
+    <link rel="stylesheet" href="index.css"> <!-- Link para o arquivo de estilos CSS -->
 </head>
+
 <body>
-    <!-- header: Define o cabeçalho de uma página ou de uma seção.
-    Normalmente contém logotipos, títulos, menus de navegação ou informações introdutórias. -->
-    <header>
-        <h1>Cardápio do Restaurante</h1>
-        <img src="outback-logo.png" alt="Logo do Restaurante Outback">
+    <header> <!-- Cabeçalho da página -->
+        <h1>Cardápio do Restaurante</h1> <!-- Título principal da página -->
+        <img src="outback-logo.png" alt="Logo do Restaurante Outback"> <!-- Logo do restaurante -->
     </header>
 
-    <!-- nav: Representa uma seção de navegação.
-    Usado para links de menus, barras laterais ou qualquer conjunto de links de navegação principal. -->
-    <nav>
+    <nav> <!-- Navegação do site -->
         <ul>
-            <li><a href="#entradas">Entradas</a></li>
-            <li><a href="#pratos">Pratos Principais</a></li>
-            <li><a href="#sobremesas">Sobremesas</a></li>
+            <li><a href="#entradas">Entradas</a></li> <!-- Link para a seção de entradas -->
+            <li><a href="#pratos">Pratos Principais</a></li> <!-- Link para a seção de pratos principais -->
+            <li><a href="#sobremesas">Sobremesas</a></li> <!-- Link para a seção de sobremesas -->
         </ul>
     </nav>
 
-    <!-- main: Indica o conteúdo principal da página.
-    Deve ser único dentro do documento e não deve conter elementos repetitivos como barras laterais ou rodapés. -->
-    <main>
-        <!-- section: Define uma seção temática do documento.
-        Pode ser usada para agrupar conteúdo relacionado dentro de main, article, etc. -->
-        <section id="entradas">
-            <h2>Entradas</h2>
-            <!-- article: Artigo representa um conteúdo independente, como um post de blog, um artigo de notícias ou um card informativo. -->
-            <article>
-                <!-- figure: Agrupa elementos de mídia, como imagens, gráficos ou vídeos, geralmente com uma legenda (figcaption). -->
-                <figure>
-                    <img src="Caesar-Salad-cmyk.jpg" alt="Prato de Caesar Salad com queijo parmesão e croutons">
-                    <figcaption>Caesar Salad com parmesão e croutons.</figcaption>
-                </figure>
-                <h3>Caesar Salad</h3>
-                <p>Combinação de alface, queijo Parmesão, croutons Outback e Molho Caesar.</p>
-            </article>
-        </section>
+    <div id="cardapio-container"></div> <!-- Div onde o cardápio será carregado dinamicamente -->
 
-        <!-- section: Define uma seção temática do documento.
-        Pode ser usada para agrupar conteúdo relacionado dentro de main, article, etc. -->
-        <section id="pratos">
-            <h2>Pratos Principais</h2>
-            <!-- article: Artigo representa um conteúdo independente, como um post de blog, um artigo de notícias ou um card informativo. -->
-            <article>
-                <!-- figure: Agrupa elementos de mídia, como imagens, gráficos ou vídeos, geralmente com uma legenda (figcaption). -->
-                <figure>
-                    <img src="Outback-Megaribs.jpg" alt="Costela Outback com molho especial e acompanhamentos">
-                    <figcaption>Outback Megaribs - Costela suculenta com fritas e cebola empanada.</figcaption>
-                </figure>
-                <h3>Outback Megaribs</h3>
-                <p>Costela suculenta com molho especial, acompanhada de fritas e cebola empanada.</p>
-            </article>
-        </section>
-
-        <!-- section: Define uma seção temática do documento.
-        Pode ser usada para agrupar conteúdo relacionado dentro de main, article, etc. -->
-        <section id="sobremesas">
-            <h2>Sobremesas</h2>
-            <!-- article: Artigo representa um conteúdo independente, como um post de blog, um artigo de notícias ou um card informativo. -->
-            <article>
-                <!-- figure: Agrupa elementos de mídia, como imagens, gráficos ou vídeos, geralmente com uma legenda (figcaption). -->
-                <figure>
-                    <img src="havanna_thunder_sobremesa.jpg" alt="Brownie de chocolate com sorvete de baunilha e calda de doce de leite">
-                    <figcaption>Havanna Thunder - Brownie de chocolate com sorvete de baunilha e doce de leite.</figcaption>
-                </figure>
-                <h3>Havanna Thunder</h3>
-                <p>Brownie de chocolate com sorvete de baunilha e calda de doce de leite.</p>
-            </article>
-        </section>
-    </main>
-
-    <!-- footer: Define o rodapé de uma página ou de uma seção.
-    Pode conter informações de copyright, links adicionais e contato. -->
-    <footer>
-        <p>© 2025 Restaurante Outback. Todos os direitos reservados.</p>
-        <p>Contato: (00) 1234-5678 | Email: contato@outback.com.br</p>
+    <footer> <!-- Rodapé da página -->
+        <p>© 2025 Restaurante Outback. Todos os direitos reservados.</p> <!-- Direitos autorais -->
+        <p>Contato: (00) 1234-5678 | Email: contato@outback.com.br</p> <!-- Informações de contato -->
     </footer>
+    
+    <script src="scrpts.js"></script> <!-- Link para o arquivo de scripts JavaScript -->
 </body>
+
 </html>
