@@ -1,35 +1,43 @@
-<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
-<html lang="pt-br"> <!-- Início da página HTML com idioma português brasileiro -->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres para a página (UTF-8) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura o comportamento de exibição para dispositivos móveis -->
-    <title>Cardápio do Restaurante</title> <!-- Título que aparece na aba do navegador -->
-    <link rel="stylesheet" href="index.css"> <!-- Link para o arquivo de estilos CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
     <header> <!-- Cabeçalho da página -->
-        <h1>Cardápio do Restaurante</h1> <!-- Título principal da página -->
         <img src="outback-logo.png" alt="Logo do Restaurante Outback"> <!-- Logo do restaurante -->
     </header>
 
-    <nav> <!-- Navegação do site -->
-        <ul>
-            <li><a href="#entradas">Entradas</a></li> <!-- Link para a seção de entradas -->
-            <li><a href="#pratos">Pratos Principais</a></li> <!-- Link para a seção de pratos principais -->
-            <li><a href="#sobremesas">Sobremesas</a></li> <!-- Link para a seção de sobremesas -->
+    <nav role="navigation"> <!-- Barra de navegação com papel semântico de navegação -->
+        <ul role="menu"> <!-- Define a lista de navegação como um menu acessível -->
+            <li role="menuitem"><a href="#entradas" aria-label="Ir para a seção de entradas">Entradas</a></li>
+            <li role="menuitem"><a href="#pratos" aria-label="Ir para a seção de pratos principais">Pratos Principais</a></li>
+            <li role="menuitem"><a href="#sobremesas" aria-label="Ir para a seção de sobremesas">Sobremesas</a></li>
         </ul>
     </nav>
 
+    <div id="filtros">
+        <button onclick="filtrar('todos')">Todos</button>
+        <button onclick="filtrar('vegetariano')">Vegetarianos</button>
+        <button onclick="filtrar('carnivoro')">Carnivoro</button>
+    </div>
+
     <div id="cardapio-container"></div> <!-- Div onde o cardápio será carregado dinamicamente -->
+
+    <div id="carrinho">
+        <h2>Carrinho</h2>
+        <p>Itens no carrinho: <span id="contador-itens">0</span></p>
+        <ul id="lista-carrinho"></ul> <!-- Lista de itens do carrinho -->
+    </div>
 
     <footer> <!-- Rodapé da página -->
         <p>© 2025 Restaurante Outback. Todos os direitos reservados.</p> <!-- Direitos autorais -->
         <p>Contato: (00) 1234-5678 | Email: contato@outback.com.br</p> <!-- Informações de contato -->
     </footer>
     
-    <script src="scrpts.js"></script> <!-- Link para o arquivo de scripts JavaScript -->
+    <script src="scrpts.js"></script> <!-- Importação do arquivo JavaScript externo -->
 </body>
-
 </html>

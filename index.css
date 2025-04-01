@@ -73,15 +73,37 @@ main {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* Centraliza os itens */
     gap: 20px;
+}
+
+/* Estilos para os filtros */
+#filtros {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#filtros button {
+    margin: 0 10px;
+    padding: 10px 15px;
+    background-color: #580000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#filtros button:hover {
+    background-color: #64091C;
+    transform: scale(1.1);
 }
 
 /* Estilos para as seções */
 section {
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 40px;
+    max-width: 600px; /* Largura máxima para as seções */
+    margin: 20px auto; /* Centraliza as seções com margem automática */
 }
 
 /* Estilos para os títulos das seções */
@@ -102,12 +124,13 @@ article {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Garante que o artigo ocupe toda a largura da seção */
 }
 
 /* Efeito de hover para os artigos */
 article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos para as imagens dentro dos artigos */
@@ -116,6 +139,41 @@ article img {
     height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
+}
+
+/* Estilos para o botão "Adicionar ao Carrinho" */
+.add-to-cart {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Estilos para feedback de adição ao carrinho */
+.feedback {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    animation: fadeInOut 2s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 /* Media Queries para responsividade (para telas menores que 768px) */
@@ -140,4 +198,23 @@ article img {
     section {
         width: 90%; /* Aumenta a largura das seções para 90% em telas menores */
     }
+}
+
+/* Adicionando estilos para o carrinho */
+#carrinho {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#carrinho h2 {
+    text-align: center;
+    color: #2e3b4e;
+}
+
+#lista-carrinho {
+    list-style-type: none;
+    padding: 0;
 }

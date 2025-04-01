@@ -5,23 +5,47 @@ const cardapio = [
         nome: "Caesar Salad",
         descricao: "Combinação de alface, queijo Parmesão, croutons Outback e Molho Caesar.",
         imagem: "Caesar-Salad-cmyk.jpg",
-        legenda: "Caesar Salad com parmesão e croutons."
+        tipo: "vegetariano" // Adicionando tipo para filtragem
+    },
+    {
+        categoria: "Entradas",
+        nome: "Bloomin Onion",
+        descricao: "cebola gigante e dourada com o autêntico sabor do Outback. Acompanha nosso maravilhoso molho Bloom.",
+        imagem: "Bloomin_Onion_cmyk_outback.png",
+        tipo: "vegetariano" // Adicionando tipo para filtragem
     },
     {
         categoria: "Pratos Principais",
         nome: "Outback Megaribs",
         descricao: "Costela suculenta com molho especial, acompanhada de fritas e cebola empanada.",
         imagem: "Outback-Megaribs.jpg",
-        legenda: "Outback Megaribs - Costela suculenta com fritas e cebola empanada."
+        tipo: "carnivoro" // Adicionando tipo para filtragem
+    },
+    {
+        categoria: "Pratos Principais",
+        nome: "Alice Springs Chicken",
+        descricao: "Suculento peito de frango grelhado e temperado com o molho Honey Mustard, coberto de bacon, champignons e mix de queijos gratinados.",
+        imagem: "alice_springs_chicken.png",
+        tipo: "carnivoro" // Adicionando tipo para filtragem
     },
     {
         categoria: "Sobremesas",
         nome: "Havanna Thunder",
         descricao: "Brownie de chocolate com sorvete de baunilha e calda de doce de leite.",
         imagem: "havanna_thunder_sobremesa.jpg",
-        legenda: "Havanna Thunder - Brownie de chocolate com sorvete de baunilha e doce de leite."
+        tipo: "vegetariano" // Adicionando tipo para filtragem
+    },
+    {
+        categoria: "Sobremesas",
+        nome: "Smores Outback",
+        descricao: "Uma sobremesa quente, que combina cookies de gotas de chocolate com nosso surpreendente brigadeiro Outback, marshmallow gratinado, calda de chocolate e raspas de chocolate para finalizar.",
+        imagem: "Smores_outback.png",
+        tipo: "vegetariano" // Adicionando tipo para filtragem
     }
 ];
+
+let cartCount = 0;
+const cartItems = [];
 
 // Aguardando o carregamento completo do DOM antes de executar o script
 document.addEventListener("DOMContentLoaded", function() {
@@ -41,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Cria um artigo para o item do cardápio
         const article = document.createElement("article");
+        article.classList.add(item.tipo); // Adiciona a classe para filtragem
 
         // Cria o elemento de figura para a imagem do prato
         const figure = document.createElement("figure");
@@ -67,6 +92,15 @@ document.addEventListener("DOMContentLoaded", function() {
         p.textContent = item.descricao;
         article.appendChild(p); // Adiciona a descrição ao artigo
 
+        // Cria o botão "Adicionar ao Carrinho"
+        const addButton = document.createElement("button");
+        addButton.textContent = "Adicionar ao Carrinho";
+        addButton.classList.add("add-to-cart");
+        addButton.addEventListener("click", () => {
+            addToCart(item.nome);
+        });
+        article.appendChild(addButton); // Adiciona o botão ao artigo
+
         // Adiciona o artigo à seção
         section.appendChild(article);
 
@@ -74,3 +108,47 @@ document.addEventListener("DOMContentLoaded", function() {
         container.appendChild(section);
     });
 });
+
+// Função para atualizar a contagem de itens no carrinho
+function updateCartCount() {
+    document.getElementById("contador-itens").textContent = cartCount;
+}
+
+// Função para adicionar item ao carrinho
+function addToCart(itemName) {
+    cartCount++;
+    cartItems.push(itemName);
+    updateCartCount();
+    renderCartItems();
+
+    // Animação de feedback
+    const feedback = document.createElement("div");
+    feedback.textContent = `${itemName} adicionado ao carrinho!`;
+    feedback.classList.add("feedback");
+    document.body.appendChild(feedback);
+    setTimeout(() => feedback.remove(), 2000); // Remove após 2 segundos
+}
+
+// Função para renderizar os itens no carrinho
+function renderCartItems() {
+    const listaCarrinho = document.getElementById("lista-carrinho");
+    listaCarrinho.innerHTML = ""; // Limpa a lista antes de renderizar
+
+    cartItems.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        listaCarrinho.appendChild(li);
+    });
+}
+
+// Função para filtrar os itens do cardápio
+function filtrar(categoria) {
+    const artigos = document.querySelectorAll("article");
+    artigos.forEach(artigo => {
+        if (categoria === 'todos' || artigo.classList.contains(categoria)) {
+            artigo.style.display = 'block';
+        } else {
+            artigo.style.display = 'none';
+        }
+    });
+}
