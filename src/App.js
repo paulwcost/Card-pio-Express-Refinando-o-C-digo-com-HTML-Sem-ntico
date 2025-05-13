@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+
+import React, { Suspense, lazy, useState } from "react";
 import menuItems from "./data";
 import MenuItem from "./componente/menuItem";
 import "./App.css";
 
+// Importação dinâmica do componente não crítico
+const ExtraInfo = lazy(() => import("./componente/ExtraInfo"));
+
 function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
+  // const [mostrarExtra, setMostrarExtra] = useState(false);
+  
 
   const adicionarAoCarrinho = (item) => {
     setCarrinho([...carrinho, item]);
@@ -68,8 +74,19 @@ function App() {
           ))}
         </section>
       </main>
+
+      <div style={{ marginTop: "2rem", textAlign: "center" }}>
+                  
+                    <Suspense fallback={<div>Carregando informações extras...</div>}>
+                      <ExtraInfo />
+                    </Suspense>
+
+                </div>
+
     </div>
   );
 }
+
+
 
 export default App;
