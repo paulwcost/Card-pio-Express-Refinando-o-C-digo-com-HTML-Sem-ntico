@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcardapio=self.webpackChunkcardapio||[]).push([[573],{573:(a,e,s)=>{s.r(e),s.d(e,{ExtraInfo:()=>n,default:()=>r});s(43);var c=s(579);function n(){return(0,c.jsxs)("div",{children:[(0,c.jsx)("h3",{children:"Mais Informa\xe7\xf5es"}),(0,c.jsx)("p",{children:"Este \xe9 um conte\xfado extra carregado sob demanda usando code splitting com React.lazy()."})]})}const r=n}}]);
+//# sourceMappingURL=573.6bd6b771.chunk.js.map

@@ -1,17 +1,15 @@
-
 import React, { Suspense, lazy, useState } from "react";
 import menuItems from "./data";
-import MenuItem from "./componente/menuItem";
 import "./App.css";
 
-// Importação dinâmica do componente não crítico
+// Importações dinâmicas com React.lazy()
+const MenuItem = lazy(() => import("./componente/menuItem"));
 const ExtraInfo = lazy(() => import("./componente/ExtraInfo"));
+const Carrinho = lazy(() => import("./componente/carrinho")); 
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
-  // const [mostrarExtra, setMostrarExtra] = useState(false);
-  
 
   const adicionarAoCarrinho = (item) => {
     setCarrinho([...carrinho, item]);
@@ -28,10 +26,12 @@ function App() {
   };
 
   const calcularTotal = () => {
-    return carrinho.reduce((total, item) => {
-      const preco = parseFloat(item.price.replace("R$", "").replace(",", "."));
-      return total + preco;
-    }, 0).toFixed(2);
+    return carrinho
+      .reduce((total, item) => {
+        const preco = parseFloat(item.price.replace("R$", "").replace(",", "."));
+        return total + preco;
+      }, 0)
+      .toFixed(2);
   };
 
   return (
@@ -40,53 +40,36 @@ function App() {
         🛒 {carrinho.length}
       </button>
 
-      <div className={`painel-carrinho ${mostrarCarrinho ? "aberto" : ""}`}>
-        <h2>Carrinho</h2>
-        <button className="fechar-carrinho" onClick={toggleCarrinho}>×</button>
-
-        {carrinho.length === 0 ? (
-          <p className="mensagem-vazio">Seu carrinho está vazio.</p>
-        ) : (
-          <div>
-            <ul className="lista-carrinho">
-              {carrinho.map((item, index) => (
-                <li key={index}>
-                  <div className="item-carrinho">
-                    <span>{item.name}</span>
-                    <span>{item.price}</span>
-                    <button onClick={() => removerDoCarrinho(index)}>Remover</button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="total-carrinho">
-              <strong>Total:</strong> R$ {calcularTotal()}
-            </div>
-          </div>
-        )}
-      </div>
+      {/* Carrinho separado em um componente dinâmico */}
+      {mostrarCarrinho && (
+        <Suspense fallback={<div>Carregando carrinho...</div>}>
+          <Carrinho
+            carrinho={carrinho}
+            removerDoCarrinho={removerDoCarrinho}
+            calcularTotal={calcularTotal}
+            toggleCarrinho={toggleCarrinho}
+          />
+        </Suspense>
+      )}
 
       <main className="menu-container">
         <h1 className="menu-title">Cardápio Outback</h1>
         <section className="menu-grid">
-          {menuItems.map((item, index) => (
-            <MenuItem key={index} {...item} onAdd={() => adicionarAoCarrinho(item)} />
-          ))}
+          <Suspense fallback={<div>Carregando itens do menu...</div>}>
+            {menuItems.map((item, index) => (
+              <MenuItem key={index} {...item} onAdd={() => adicionarAoCarrinho(item)} />
+            ))}
+          </Suspense>
         </section>
       </main>
 
       <div style={{ marginTop: "2rem", textAlign: "center" }}>
-                  
-                    <Suspense fallback={<div>Carregando informações extras...</div>}>
-                      <ExtraInfo />
-                    </Suspense>
-
-                </div>
-
+        <Suspense fallback={<div>Carregando informações extras...</div>}>
+          <ExtraInfo />
+        </Suspense>
+      </div>
     </div>
   );
 }
-
-
 
 export default App;
